@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoco</title>
+    <!-- Police de caractères -->
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Le CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
+	
+</head>
+<body>
+    <header>
+        <section class="bloc bgc-dark-slate-blue bg-banniere d-bloc bg-t-edge bloc-bg-texture texture-paper b-parallax" id="bloc-1-hero" >
+            <div class="container bloc-lg">
+                <div class="row tight-width-whitespace my-3">
+                    <div class="col-sm-12">
+                        <nav class="card navbar row" style="background-color: #F3E9F1;">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="index.html"><img src="./images/oriconoLogo.png" alt="oricono logo" height="70" /></a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>  
+    </header>
+
+
+    <main>
+        <section class="bloc bgc-dark-slate-blue bg-banniere d-bloc bg-t-edge bloc-bg-texture texture-paper b-parallax" id="bloc-1-hero" >
+            <h1 class="text-center card m-3">
+                Orinoco vous propose :
+            </h1>
+            <div class="container bloc-lg">
+                <div class="row tight-width-whitespace">
+                    <div class="col-sm-12">
+                        <ul class="card-deck " id="displayProduct">
+                            <li id="error">
+                                <i id="error__logo" class="fas fa-exclamation-triangle"></i>
+                                <p id="error__msg">Désolé une erreur avec l'API est survenue, ou la page démandée n'existe pas ! Veuillez réesayer</p>
+                            </li>				
+                        </ul>
+                        <div class="card m-3">
+                            <a href="basket.html" class="btn btn-outline-info">
+                                Aller au panier
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="m-3 text-center" >
+        <p>Projet P5 - Orinoco de la formation Développeur Web <a href="https://openclassrooms.com/">Openclassrooms</a>, réalisé par <a href="https://antoine-zerbib.github.io/">Antoine Zerbib</a>.</p>
+    </footer>
+
+    <!--  Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+        crossorigin="anonymous"></script>
+        
+    <!-- Js de Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+        crossorigin="anonymous"></script>
+
+    <!-- Js des produits-->
+    <script src="./js/API.js" ></script>
+    <script src="./js/index_display.js" ></script>
+
+    <script> 
+        allProductsList(); 
+    </script>
+
+</body>
+</html>
