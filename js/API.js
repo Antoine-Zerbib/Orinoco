@@ -5,7 +5,6 @@ const produitSell = "cameras"  //Au choix entre : "cameras" - "furniture" - "ted
 const APIURL = "http://localhost:3000/api/" + produitSell + "/";
 
 //id du produit pour permettre un tri dans l'API
-
 let idProduit = "";
 
 
@@ -19,18 +18,15 @@ getProduits = () =>{
 			if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
 				resolve(JSON.parse(this.responseText));
 				console.log("Administration : connection API ok");
-				//L'appel est réussi =>
+
+				//L'appel est réussi => suppression du message d'erreur
 				error = document.getElementById("error");
 				if(error == null){
 					console.log("Administration : pas de message ERROR connection API à supprimer");
 				} else {
-				//suppression du message d'erreur
-				
-				error.remove();
-				console.log("Administration : message ERROR connection API supprimé");
+					error.remove();
+					console.log("Administration : message ERROR connection API supprimé");
 				}
-				
-				
 			} else {
 				console.log("Administration : ERROR connection API");
 			}

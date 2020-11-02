@@ -2,13 +2,14 @@
 /*Création du HTML de chaque produit de index.html
 **********************************************/
 
-	//Construction de la liste des produits en vente sur la page index
+//Construction de la liste des produits en vente sur la page index
 async function allProductsList(){
 	const produits = await getProduits();
 
 	//Création de la section accueillant la liste des produits
 	let listProduct = document.createElement("ul");
 	listProduct.setAttribute("class", "card-deck");
+
 	//Ajout de la section dans le HTML
 	let displayProduct = document.getElementById("displayProduct");
 	displayProduct.appendChild(listProduct);
@@ -34,6 +35,7 @@ async function allProductsList(){
         produitImage.setAttribute("class", "card-img-top");
         produitNom.setAttribute("class", "card-title");
 		produitDecouvrir.setAttribute("class", "text-info");
+		
 		//Création du lien pour ouvrir le produit concerné
 		produitLien.setAttribute("href", "product.html?id=" + produit._id);
 		produitLien.setAttribute("class", "text-decoration-none text-dark h-100");

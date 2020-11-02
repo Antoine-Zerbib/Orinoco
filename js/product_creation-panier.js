@@ -8,7 +8,8 @@ if(localStorage.getItem("userPanier")) {
 	console.log("Administration : le panier de l'utilisateur existe dans le localStorage");
 } else {
 	console.log("Administration : Le panier n'existe pas, il va être créer et l'envoyer dans le localStorage");
-  	//Le panier est un tableau de produits
+	  
+	//Le panier est un tableau de produits
   	let panierInit = [];
   	localStorage.setItem("userPanier", JSON.stringify(panierInit));
 };

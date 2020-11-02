@@ -3,6 +3,7 @@
 **********************************************/
 
 async function detailProduit(){
+
     //Collecter l'URL après le ?id= pour le récupérer uniquement sur l'API
     idProduit = location.search.substring(4);
     const produitSelected = await getProduits();
@@ -18,7 +19,7 @@ async function detailProduit(){
     document.getElementById("descriptionProduct").innerHTML = produitSelected.description;
     document.getElementById("priceProduct").innerHTML = produitSelected.price / 100 + " euros";
     
-    //Selon le type de produit (ligne 3 de API.js) création des options
+    //Selon le type de produit (ligne 4 de API.js) création des options
     switch(produitSell){
     	case "cameras":
     	produitSelected.lenses.forEach((produit)=>{
