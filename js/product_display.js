@@ -4,7 +4,7 @@
 
 async function detailProduit(){
 
-    //Collecter l'URL après le ?id= pour le récupérer uniquement sur l'API
+    //Collecter dans l'URL le string après le ?id= pour modifier l'url avec "idProduit" sur l'API.js L.35
     idProduit = location.search.substring(4);
     const produitSelected = await getProduits();
     console.log("Administration : Vous regardez la page du produit id_"+produitSelected._id);

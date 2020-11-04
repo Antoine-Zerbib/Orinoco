@@ -78,7 +78,7 @@ checkInput = () =>{
         errorTown.setAttribute("class", "d-none");
     };
 
-    //Si un des champs n'est pas bon => message d'alert avec la raison
+    //Si un des champs n'est pas bon => message d'alerte 
     if(contactValide == false) {
         alert("Votre fiche Contact contient une erreur");
     } else {
@@ -96,7 +96,7 @@ checkInput = () =>{
 };
 
 //Vérification du panier
-//Création de 'products' une liste d' "_id" pour l'objet du formulaire L.180
+//Création de 'products' une liste d' "_id" pour l'objet du formulaire L.185
 let products = [];
 checkPanier = () =>{
 
@@ -104,18 +104,13 @@ checkPanier = () =>{
     let etatPanier = JSON.parse(localStorage.getItem("userPanier"));
 
     //Si le panier est vide ou null (suppression localStorage par)=>alerte
-    if (etatPanier == null) {
-        
-        //Si l'utilisateur à supprimer son localStorage etatPanier sur la page basket.html et qu'il continue le process de commande
-        alert("Il y a eu un problème avec votre panier, une action non autorisée a été faite. Veuillez recharger la page pour la corriger");
-        return false
-    } else if (etatPanier.length < 1 || etatPanier == null) {
+     if (etatPanier.length < 1 || etatPanier == null) {
         console.log("Administration: ERROR =>le localStorage ne contient pas de panier");
         alert("Votre panier est vide");
         return false;
     } else {
-        
         console.log("Administration : Le panier n'est pas vide");
+
         //Si le panier n'est pas vide on rempli le products envoyé à l'API
         etatPanier.forEach((produit) => {
             products.push(produit._id);
@@ -129,7 +124,7 @@ checkPanier = () =>{
 //Supprimer un produit du panier L.67 de "panier_diplay.js"
 let userPanier = JSON.parse(localStorage.getItem("userPanier"));
 annulerProduit = (i) =>{
-      console.log("Administration : Enlever le produit à l'index " + i);
+    console.log("Administration : Enlever le produit à l'index " + i);
       
     //recupérer le array
     userPanier.splice(i, 1); 
@@ -160,7 +155,9 @@ envoiDonnees = (objetRequest) => {
                 //Sauvegarde du retour de l'API dans sessionStorage pour affichage dans order-confirm.html
                 sessionStorage.setItem("order", this.responseText);
                 resolve(JSON.parse(this.responseText));
-           }
+                console.log("Administration : status : " + this.status);
+                console.log("Administration : objet 'order' envoyé au session storage")
+            }
         };
         request.open("POST", APIURL + "order");
         request.setRequestHeader("Content-Type", "application/json");
@@ -172,7 +169,9 @@ envoiDonnees = (objetRequest) => {
 validForm = () => {
 
     //Ecoute de l'event click du formulaire
-     let btnForm = document.getElementById("envoiPost");
+    let btnForm = document.getElementById("envoiPost");
+
+    //pas besoin de .preventDefault vu que le bouton n'est pas un submit
     btnForm.addEventListener("click", function() {
 
         //Lancement des verifications du panier et du form => si Ok envoi
@@ -184,13 +183,14 @@ validForm = () => {
                 contact,
                 products
             };
-            
+
             //Conversion en JSON
             let objetRequest = JSON.stringify(objet);
             console.log("Administration : Création de l'objet : " + objetRequest);
 
             //Envoi de l'objet via la function L.122
             let test = envoiDonnees(objetRequest);
+            test;
             console.log(test);
             console.log("Administration : Envoi de l'objet en POST" );
 
@@ -201,7 +201,7 @@ validForm = () => {
             console.log("Administration : Local storage vidé");
             
             //Chargement de la page de confirmation
-            document.location.href="./order-confirm.html";
+            window.location.href="./order-confirm.html";
         } else {
         console.log("Administration : ERROR");
         };

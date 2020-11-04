@@ -36,7 +36,7 @@ resultOrder = () =>{
             
             //Insertion du nom et du prix
             document.getElementById("product"+[i]).innerHTML =  order.products[i].name + " : " + order.products[i].price / 100 +" €";
-            console.log("Administration : "+ order.products[0].name + "a été affichée sur le résumé de commande à " + + order.products[i].price + " €");
+            console.log("Administration : "+ order.products[0].name + "a été affichée sur le résumé de commande à " + + order.products[i].price /100 + " €");
             
             //Total de l'addition
             prixTotal += order.products[i].price / 100;
@@ -44,7 +44,7 @@ resultOrder = () =>{
             i++;
         });
         document.getElementById("prixTotal").innerHTML = prixTotal;
-        console.log("Administration : Prix total = " + prixTotal + " €");
+        console.log("Administration : Prix total = " + prixTotal+ " €");
         console.log("Administration : Chargement des infos OK");
         
         //Suppression de la clé du sessionStorage pour renvoyer au else si actualisation de la page ou via url direct
@@ -53,9 +53,9 @@ resultOrder = () =>{
     
     } else { 
         
-        //On enlève le contenu de la page confirmation et on lisse le message d'erreur
+        //On enlève le contenu de la page confirmation et on laisse le message d'erreur
         document.getElementById("commandeOk").remove();
-        console.log("Echec chargement du local storage " + "infos = nom :" + order.contact.lastName + "id :" + order.orderId);
+        console.log("Administration : Echec chargement du session storage, il ne contient pas d'objet 'order'");
     }
 }
 

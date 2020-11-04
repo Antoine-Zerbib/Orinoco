@@ -1,7 +1,7 @@
 /*Génération de l'URL de l'API selon le choix de catégorie à vendre
 **********************************************/
 
-const produitSell = "cameras"  //Au choix entre : "cameras" - "furniture" - "teddies"
+const produitSell = "teddies"  //Au choix entre : "cameras" - "furniture" - "teddies"
 const APIURL = "http://localhost:3000/api/" + produitSell + "/";
 
 //id du produit pour permettre un tri dans l'API
@@ -28,10 +28,11 @@ getProduits = () =>{
 					console.log("Administration : message ERROR connection API supprimé");
 				}
 			} else {
+				console.log("Administration : status : " + this.status);
 				console.log("Administration : ERROR connection API");
 			}
 		}
-		//Appel des produits avec APIURL selon la catégorie l.4
+		//Appel des produits avec APIURL selon la catégorie L.4
 		request.open("GET", APIURL + idProduit);
 		request.send();
 	});
