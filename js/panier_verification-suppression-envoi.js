@@ -12,9 +12,6 @@ checkInput = () =>{
     let checkMail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/y;
     let checkSpecialCharacter = /[§!@#$%^&*(),.?":{}|<>]/;
 
-    //message fin de controle
-    let checkMessage = "";
-
     //Récupération des inputs
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
@@ -147,21 +144,25 @@ annulerProduit = (i) =>{
 
 //Fonction requet post de l'API
 envoiDonnees = (objetRequest) => {
-    return new Promise((resolve)=> {
-        let request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            if(this.readyState == XMLHttpRequest.DONE && this.status == 201) {
+     return new Promise((resolve)=> {
+         let request = new XMLHttpRequest();
+
+         //L'ERREUR ETAIT LA !!!!! ce n'était pas onreadystatechange, mais onload !!!! 
+         request.onload = function () {
+             if(this.readyState == XMLHttpRequest.DONE && this.status == 201) {
                 
-                //Sauvegarde du retour de l'API dans sessionStorage pour affichage dans order-confirm.html
-                sessionStorage.setItem("order", this.responseText);
-                resolve(JSON.parse(this.responseText));
-                console.log("Administration : status : " + this.status);
-                console.log("Administration : objet 'order' envoyé au session storage")
-            }
-        };
-        request.open("POST", APIURL + "order");
-        request.setRequestHeader("Content-Type", "application/json");
-        request.send(objetRequest);
+                 //Sauvegarde du retour de l'API dans sessionStorage pour affichage dans order-confirm.html
+                 sessionStorage.setItem("order", this.responseText);
+                 window.location.href="./order-confirm.html";
+                 resolve(JSON.parse(this.responseText));
+                 console.log("Administration : status : " + this.status);
+                 console.log("Administration : objet 'order' envoyé au session storage")
+             }
+         };
+         request.open("POST", APIURL + "order");
+         request.setRequestHeader("Content-Type", "application/json");
+         request.send(objetRequest);
+    console.log(objetRequest)
     });
 };
 
@@ -172,7 +173,7 @@ validForm = () => {
     let btnForm = document.getElementById("envoiPost");
 
     //pas besoin de .preventDefault vu que le bouton n'est pas un submit
-    btnForm.addEventListener("click", function() {
+    btnForm.addEventListener("click", function () {
 
         //Lancement des verifications du panier et du form => si Ok envoi
         if (checkPanier() == true && checkInput() != null) {
@@ -201,7 +202,6 @@ validForm = () => {
             console.log("Administration : Local storage vidé");
             
             //Chargement de la page de confirmation
-            window.location.href="./order-confirm.html";
         } else {
         console.log("Administration : ERROR");
         };
