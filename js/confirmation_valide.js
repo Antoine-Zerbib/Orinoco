@@ -2,7 +2,15 @@
 **********************************************/
 
 resultOrder = () =>{
+
+    // récupération des blocks à afficher
+    let commandeVide = document.getElementById("commandeVide")
+    let commandeOk = document.getElementById("commandeOk")
 	if(sessionStorage.getItem("order") != null) {
+        
+        //enlève le message error
+        commandeOk.setAttribute("class", "d-block")
+        commandeVide.setAttribute("class", "d-none")
 
         console.log("Administration : L'objet 'order' contient des informations")
         //Si l'objet 'order' est dans le local storage supprime le message 
@@ -54,7 +62,8 @@ resultOrder = () =>{
     } else { 
         
         //On enlève le contenu de la page confirmation et on laisse le message d'erreur
-        document.getElementById("commandeOk").remove();
+        commandeOk.setAttribute("class", "d-none")
+        commandeVide.setAttribute("class", "d-block")
         console.log("Administration : Echec chargement du session storage, il ne contient pas d'objet 'order'");
     }
 }

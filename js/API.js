@@ -15,19 +15,21 @@ getProduits = () =>{
 	return new Promise((resolve) =>{
 		let request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
+			let error = document.getElementById("error");
 			if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
 				resolve(JSON.parse(this.responseText));
 				console.log("Administration : connection API ok");
 
 				//L'appel est réussi => suppression du message d'erreur
-				error = document.getElementById("error");
+				
 				if(error == null){
 					console.log("Administration : pas de message ERROR connection API à supprimer");
 				} else {
-					error.remove();
+					error.setAttribute("class", "d-none")
 					console.log("Administration : message ERROR connection API supprimé");
 				}
 			} else {
+				error.setAttribute("class", "d-block")
 				console.log("Administration : status : " + this.status);
 				console.log("Administration : ERROR connection API");
 			}

@@ -8,10 +8,6 @@ async function detailProduit(){
     idProduit = location.search.substring(4);
     const produitSelected = await getProduits();
     console.log("Administration : Vous regardez la page du produit id_"+produitSelected._id);
-
-    //Faire apparaitre la fiche produit initialement en display none
-    let section = document.getElementById("section");
-    section.style.display = "block";
     
     //Remplissage de la fiche produit
     document.getElementById("imgProduct").setAttribute("src", produitSelected.imageUrl);

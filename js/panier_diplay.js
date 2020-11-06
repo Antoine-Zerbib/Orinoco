@@ -2,12 +2,16 @@
 **********************************************/
 
 addition = () =>{
+
+    //récupération du block info panier vide
+    let panierVide = document.getElementById("panierVide")
+    
     //Vérifie si il y a un produit dans le panier
     if(JSON.parse(localStorage.getItem("userPanier")).length > 0){
 
         //S'il n'est pas vide on supprime le message et on créé le tableau récapitulatif
-        document.getElementById("panierVide").remove();
-
+        panierVide.setAttribute("class", "d-none")
+        
         //Création de la structure principale du tableau  
         let facture = document.createElement("ul");
         let ligneTableau = document.createElement("li");
@@ -108,6 +112,7 @@ addition = () =>{
         console.log("Administration : prix total " + totalPaye + "€");
         document.getElementById("sommeTotal").textContent = totalPaye + " €";
     } else {
+        panierVide.setAttribute("class", "d-block")
         console.log("Administration : panier vide");
     };
 }

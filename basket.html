@@ -36,9 +36,11 @@
 
     <main class="basket">
         <div id="panier-resume">
-            <p id="panierVide" class=" card text-center col-12 bg-danger text-white">
-                <strong>Votre panier est vide</strong>
-            </p>
+            <div id="panierVide" class="d-none">
+                <p  class=" card text-center col-12 bg-danger text-white ">
+                    <strong>Votre panier est vide</strong>
+                </p>
+            </div>
         </div>
         <div class="form">
             <form class="card-deck col-12 d-flex justify-content-center flex-wrap" method="post" name="form-panier">

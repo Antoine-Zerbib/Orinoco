@@ -35,7 +35,7 @@
       </header>
 
       <main id="main">
-		<div id="error">
+		<div id="error" class="d-none">
 			<i id="error__logo" class="fas fa-exclamation-triangle"></i>
 			<p id="error__msg">
                 Désolé une erreur avec l'API est survenue, ou la page démandée n'existe pas ! Veuillez réesayer
@@ -60,8 +60,12 @@
                         </label>
 					    <select name="option" id="optionSelect" class="btn btn-outline-secondary">
 						    <option value="" id="choix">Faites votre choix</option>
-					    </select>
+                        </select>
+                        <p id="errorOption" class="d-none">
+                            Veuillez sélectionner une option.
+                        </p>
                     </div>
+                    
                     <div class="list-group-item d-flex">
                         <p class="card-text pr-2">
                             Prix :
