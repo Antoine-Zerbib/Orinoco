@@ -44,7 +44,7 @@ resultOrder = () =>{
             
             //Insertion du nom et du prix
             document.getElementById("product"+[i]).innerHTML =  order.products[i].name + " : " + order.products[i].price / 100 +" €";
-            console.log("Administration : "+ order.products[0].name + "a été affichée sur le résumé de commande à " + + order.products[i].price /100 + " €");
+            console.log("Administration : "+ order.products[0].name + " a été affichée sur le résumé de commande à " + + order.products[i].price /100 + " €");
             
             //Total de l'addition
             prixTotal += order.products[i].price / 100;

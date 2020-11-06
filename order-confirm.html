@@ -22,7 +22,7 @@
             <div class="container bloc-lg">
                 <div class="row tight-width-whitespace my-3">
                     <div class="col-sm-12">
-                        <nav class="card navbar row" style="background-color: #F3E9F1;">
+                        <nav class="card navbar row bg-header">
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="index.html"><img src="./images/oriconoLogo.png" alt="oricono logo" height="70" /></a>
                             </div>
@@ -34,10 +34,14 @@
     </header>
 	<section class="d-flex justify-content-center mb-3">
 		<div class="card">
-			<p id="commandeVide" class="m-3 text-danger text-center d-none"> 
-				<i class="fas fa-exclamation-triangle"></i>
-				Aucune commande passée, il semblerait que vous soyez arrivé ici par erreur !
-			</p>
+			<div id="commandeVide" class="d-none">
+				<p class="m-3 text-danger text-center"> 
+					<i class="fas fa-exclamation-triangle"></i>
+					Vous êtes sur la page de confirmation de commande, et il n'y a pas de commande à afficher.
+					<br>
+					Merci de vous rediriger vers l'accueil.				
+				</p>
+			</div>
 			<div id ="commandeOk" class="d-none">
 				<div class="card-body ">
 				

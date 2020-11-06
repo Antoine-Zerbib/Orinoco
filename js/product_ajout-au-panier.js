@@ -18,24 +18,32 @@ addPanier = () =>{
 		//récupération de la balise errorOption
 		let errorOption = document.getElementById("errorOption")
 		let optionValide = false;
-		// Si le message d'accueil est affiché => false
+		
+		// Si le message d'accueil est affiché => Erreur
 		if(option == "Faites votre choix"){
-			console.log("option incorrecte");	
-			console.log(`optionSelect = ${optionSelect.options[choix].text }`)	
+			console.log(`Administration : choix de l'option incorrecte =>  ${optionSelect.options[choix].text }`);	
 			errorOption.setAttribute("class", "d-block text-danger text-right")
 		} else {
 			errorOption.setAttribute("class", "d-none")
 			optionValide = true
-			console.log("option correcte")
-			console.log(`optionSelect = ${optionSelect.options[choix].text }`)
 		}
-		if(optionValide == true) {
 
-		//Récupération du panier dans le localStorage et ajout du produit dans le panier avant renvoit dans le localStorage
-		userPanier.push(produits);
-		localStorage.setItem("userPanier", JSON.stringify(userPanier));
-		console.log("Administration : le produit a été ajouté au panier");
-		alert(`Vous avez ajouté un produit dans votre panier`)
-		}
+		// On récupère le choix de le nombre de produits
+		let nombreProduits = document.getElementById("nombreProduits");
+		let choixNombre = nombreProduits.selectedIndex;
+		let optionNombre = nombreProduits.options[choixNombre].text;
+	
+		if(optionValide == true) {
+			
+			//Répétition du push selon le nombre de produits sélectionné
+			while(optionNombre > 0 ) {
+
+				//Récupération du panier dans le localStorage et ajout du produit dans le panier avant renvoit dans le localStorage
+				userPanier.push(produits);
+				localStorage.setItem("userPanier", JSON.stringify(userPanier));
+				optionNombre --;
+			}
+			alert(`Vous avez fait un ajout dans votre panier`)
+		} 
 	});
 };

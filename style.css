@@ -1,8 +1,10 @@
+
 /* Enlève le padding par défaut des listes */
 ul{
     padding-left: 0;
     list-style: none;
 }
+
 /* Empêche les cartes de rétrécir */
 .card{
     min-width: 250px;
@@ -28,4 +30,7 @@ body{
     transform: scale(1.05);
     box-shadow: 0 0 3px 1px lightgrey;
 }
-
+/* Background header*/
+.bg-header {
+    background-color: #F3E9F1;
+};

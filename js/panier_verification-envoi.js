@@ -77,7 +77,7 @@ checkInput = () =>{
 
     //Si un des champs n'est pas bon => message d'alerte 
     if(contactValide == false) {
-        alert("Votre fiche Contact contient une erreur");
+        alert("Votre fiche 'Contact' contient une erreur");
     } else {
 
     //Si tout est ok construction du array contact 
@@ -106,38 +106,15 @@ checkPanier = () =>{
         alert("Votre panier est vide");
         return false;
     } else {
-        console.log("Administration : Le panier n'est pas vide");
-
         //Si le panier n'est pas vide on rempli le products envoyé à l'API
         etatPanier.forEach((produit) => {
             products.push(produit._id);
         });
-        console.log("Administration : Ce tableau 'products' sera envoyé dans à l'API : " + products);
         return true;
     }
 };
 
 
-//Supprimer un produit du panier L.67 de "panier_diplay.js"
-let userPanier = JSON.parse(localStorage.getItem("userPanier"));
-annulerProduit = (i) =>{
-    console.log("Administration : Enlever le produit à l'index " + i);
-      
-    //recupérer le array
-    userPanier.splice(i, 1); 
-    console.log("Administration : " + userPanier);
-
-    //vide le localstorage
-    localStorage.clear();
-    console.log("Administration : localStorage vidé");
-
-    // mettre à jour le localStorage avec le nouveau panier
-    localStorage.setItem('userPanier', JSON.stringify(userPanier));
-    console.log("Administration : localStorage mis à jour");
-
-    //relancer la création de l'addition
-    window.location.reload();
-};
 
 /*Envoi du formulaire
 **********************************************/

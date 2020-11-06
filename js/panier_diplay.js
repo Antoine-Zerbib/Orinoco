@@ -23,8 +23,7 @@ addition = () =>{
         //Placement de la structure dans la page et du contenu des entetes
         let factureSection = document.getElementById("panier-resume");
         factureSection.appendChild(facture);
-        facture.appendChild(ligneTableau);
-        ligneTableau.appendChild(colonneNom);
+        facture.appendChild(colonneNom);
         colonneNom.textContent = "Votre panier";
         
         //Pour chaque produit du panier, on créé une ligne avec le nom, le prix
@@ -117,6 +116,26 @@ addition = () =>{
     };
 }
 
+//Supprimer un produit du panier L.67 de "panier_diplay.js"
+let userPanier = JSON.parse(localStorage.getItem("userPanier"));
+annulerProduit = (i) =>{
+    console.log("Administration : Enlever le produit à l'index " + i);
+      
+    //recupérer le array
+    userPanier.splice(i, 1); 
+    console.log("Administration : " + userPanier);
+
+    //vide le localstorage
+    localStorage.clear();
+    console.log("Administration : localStorage vidé");
+
+    // mettre à jour le localStorage avec le nouveau panier
+    localStorage.setItem('userPanier', JSON.stringify(userPanier));
+    console.log("Administration : localStorage mis à jour");
+
+    //relancer la création de l'addition
+    window.location.reload();
+};
 
 
 
